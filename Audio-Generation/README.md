@@ -37,7 +37,7 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 
 ## How to use Audio Genration tool step-by-step: 
 
-### 1. Clone from https://github.com/cgen101/ZIS-toolkit
+### 1. Clone from https://github.com/cgen101/ZIS-Toolkit-AudioGen
 
 ### 2. Ensure you have required installations: 
 * *Python 3.12.0*
