@@ -1,5 +1,6 @@
 import numpy as np
 import soundfile as sf
+import os
 
 def generate_audio(duration, fs, noise_levels):
     t = np.linspace(0, duration, int(fs * duration), endpoint=False)
@@ -9,6 +10,10 @@ def generate_audio(duration, fs, noise_levels):
 
 def save_audio(audio_data, output_file, fs):
     sf.write(output_file, audio_data, fs)
+
+def save_audio_to_dir(audio_data, output_file, fs, output_dir):
+    output_path = os.path.join(output_dir, output_file)
+    save_audio(audio_data, output_path, fs)
 
 def get_user_choice():
     while True:
@@ -90,8 +95,9 @@ ambient_noise_1 = car_engine_noise_1 + radio_noise_1 + road_noise_1
 # Normalize the audio
 ambient_noise_1 /= np.max(np.abs(ambient_noise_1))
 
-# Save the first audio to a .wav file
-output_file_1 = file_name_1
+# Save the first audio to a .wav file in the "audio-files" directory
+output_dir = "audio-files"
+output_file_1 = os.path.join(output_dir, file_name_1)
 save_audio((ambient_noise_1 * 32767).astype(np.int16), output_file_1, fs)
 
 print(f"First ambient audio saved to {output_file_1}")
@@ -146,8 +152,8 @@ ambient_noise_2 = car_engine_noise_2 + radio_noise_2 + road_noise_2
 # Normalize the audio
 ambient_noise_2 /= np.max(np.abs(ambient_noise_2))
 
-# Save the second audio to a .wav file
-output_file_2 = file_name_2
+# Save the second audio to a .wav file in the "audio-files" directory
+output_file_2 = os.path.join(output_dir, file_name_2)
 save_audio((ambient_noise_2 * 32767).astype(np.int16), output_file_2, fs)
 
 print(f"Second ambient audio saved to {output_file_2}")
