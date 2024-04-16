@@ -1,5 +1,5 @@
 
-% Common root path
+% Common root path-- CHANGE TO YOUR PATH HERE
 rootPath = "C:\Users\chlo\Documents\Spring 24\Security (CS4371)\Project\Test-Dir-Fork\ZIS-toolkit-AudioGen\Audio-Generation\";
 
 % Path to directory containing files to read to/write from 
