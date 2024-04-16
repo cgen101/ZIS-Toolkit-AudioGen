@@ -3,11 +3,17 @@
 
 import json
 
-# List of file paths
-filePaths = [
-    r'C:\Users\chlo\Documents\Spring 24\Security (CS4371)\Project\Test-Dir-Fork\ZIS-toolkit-AudioGen\Audio-Generation\Relevant-Files\Results\cross_correlation_result.json',
-    r'C:\Users\chlo\Documents\Spring 24\Security (CS4371)\Project\Test-Dir-Fork\ZIS-toolkit-AudioGen\Audio-Generation\Relevant-Files\Results\cross_correlation_result_2.json',
+# Define the root path-- CHANGE TO YOUR PATH HERE
+rootPath = r'C:\Users\chlo\Documents\Spring 24\Security (CS4371)\Project\Test-Dir-Fork\ZIS-toolkit-AudioGen\Audio-Generation\Relevant-Files\Results\\'
+
+# List of file names (excluding root path)
+fileNames = [
+    'cross_correlation_result.json',
+    'cross_correlation_result_2.json',
 ]
+
+# Construct full file paths
+filePaths = [rootPath + fileName for fileName in fileNames]
 
 # Process each file
 for filePath in filePaths:
