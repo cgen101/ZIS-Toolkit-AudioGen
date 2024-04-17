@@ -9,10 +9,10 @@ rootPath = "C:\Users\chlo\Documents\Spring 24\Security (CS4371)\Project\Test-Dir
 ioPath = fullfile(rootPath, "Relevant-Files");
 
 % Relative paths for the audio files
-filePath1 = fullfile(rootPath, "audio-files", "colocated_idle_2.flac");
-filePath2 = fullfile(rootPath, "audio-files", "colocated_idle.flac");
-filePath3 = fullfile(rootPath, "audio-files", "non_colocated_city_2.flac");
-filePath4 = fullfile(rootPath, "audio-files", "non_colocated_city.flac");
+filePath1 = fullfile(rootPath, "audio-files", "colocated_highway_2.flac");
+filePath2 = fullfile(rootPath, "audio-files", "colocated_highway.flac");
+filePath3 = fullfile(rootPath, "audio-files", "non_colocated_idle_2.flac");
+filePath4 = fullfile(rootPath, "audio-files", "non_colocated_idle.flac");
 
 newAudioJob(filePath1, filePath2, ioPath);
 newAudioJob(filePath3, filePath4, ioPath);
