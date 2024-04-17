@@ -47,15 +47,21 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 * *MATLAB Version: 24.1.0.2537033 (R2024a)*
 * *Signal Processing Toolbox (Version 24.1)*
 
-### 3. Navigate to Audio-Generation directory and either run *python generate.py* TWICE, or run *python generate_all.py* for all possible pairs.
+### 3. Navigate to Audio-Generation directory and either run *python generate.py*  or run *python generate_all.py* for all possible pairs.
 * Follow prompts in terminal to generate audio files
-* The files will be written into a sub-directory, 'audio-files', in 'Audio-Generation' as .flac with relevant names 
+* Each run of *python generate.py* will generate a pair of audio files for pairing simulation
+* The .flac files will be written into a sub-directory, 'audio-files', in 'Audio-Generation' with relevant names 
+* Keep in mind, each generation of non-colocated files will give slightly different results, as the non-colocated files have an element of randomness in their generation. 
 
-### 3. Change relevant filepaths in and your root filepath RunAudioJob
+### 3. Change relevant filepaths in RunAudioJob- root and specific filenames
 * *filePath1* should be path to first audio file for pairing 1
 * *filePath2* should be path to second audio file for pairing 1
 * *filePath3* should be path to first audio file for pairing 2
 * *filePath4* should be path to second audio file for pairing 2
+* Add as many pairs as you would like to test to filePaths
+* You may test as many pairings as you wish, but keep in mind there must be an even number of files to 
+pair 
+
 
 ### 4. Open MATLAB, create a new project from file 
 * Make sure to add Audio-Generation directory with subfolders to project path 
@@ -63,10 +69,10 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 
 ### 5. Run 'RunAudioJob'
 * RunAudioJob will create a subfolder in 'Relevant-Files' called *'Results'*
-* *'Results'* will contain json files with cross-correlation results for tests 1 and 2 upon completion 
+* *'Results'* will contain json files with cross-correlation results for test pairings (n) upon completion numbered 1-n 
 
 ### 6. Navigate to Relevant-Files and run determine-colocation.py 
-* To run pairings 1 and 2, change rootPath to your path to 'Results' then run *python determine-colocation.py*
+* To run pairings, change rootPath to your path to 'Results' then run *python determine-colocation.py*
 
 
 
