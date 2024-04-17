@@ -33,6 +33,7 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 * *spfFilterBank.mat* - a filter bank necessary for computing the SPF feature (regenerated if is not present in the folder). 
 
 #### generate.py: A script to generate 2 ambient audio files for the Car scenario based on user input
+#### generate_all.py: A script to generate all possible audio file pairs (12 total) for demo and testing 
 
 
 ## How to use Audio Genration tool step-by-step: 
@@ -46,16 +47,15 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 * *MATLAB Version: 24.1.0.2537033 (R2024a)*
 * *Signal Processing Toolbox (Version 24.1)*
 
-### 3. Navigate to Audio-Generation directory and run *python generate.py* TWICE
+### 3. Navigate to Audio-Generation directory and either run *python generate.py* TWICE, or run *python generate_all.py* for all possible pairs.
 * Follow prompts in terminal to generate audio files
-* The files will be written into Audio-Generation as .flac with relevant names 
+* The files will be written into a sub-directory, 'audio-files', in 'Audio-Generation' as .flac with relevant names 
 
-### 3. Change relevant filepaths in RunAudioJob
-* *ioPath* should be path to Relevant-Files
-* *filePath1* should be path to first audio file for test 1
-* *filePath2* should be path to second audio file for test 1
-* *filePath3* should be path to first audio file for test 2
-* *filePath4* should be path to second audio file for test 2
+### 3. Change relevant filepaths in and your root filepath RunAudioJob
+* *filePath1* should be path to first audio file for pairing 1
+* *filePath2* should be path to second audio file for pairing 1
+* *filePath3* should be path to first audio file for pairing 2
+* *filePath4* should be path to second audio file for pairing 2
 
 ### 4. Open MATLAB, create a new project from file 
 * Make sure to add Audio-Generation directory with subfolders to project path 
@@ -66,7 +66,7 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 * *'Results'* will contain json files with cross-correlation results for tests 1 and 2 upon completion 
 
 ### 6. Navigate to Relevant-Files and run determine-colocation.py 
-* To run pairing 1 with the first pair of files, change *filePath* to [your path]\Results\cross_correlation_result.json, then run the script. 
-* To run pairing 2 with the second pair of files, change *filePath* to [your path]\Results\cross_correlation_result_2.json, then run the script.
+* To run pairings 1 and 2, change rootPath to your path to 'Results' then run *python determine-colocation.py*
+
 
 
