@@ -41,7 +41,7 @@ counter = 1;
 while true
     % Generate the filename with or without the counter
     if counter == 1
-        resultFile = fullfile(resultsFolder, 'cross_correlation_result.json');
+        resultFile = fullfile(resultsFolder, 'cross_correlation_result_1.json');
     else
         resultFile = fullfile(resultsFolder, sprintf('cross_correlation_result_%d.json', counter));
     end
