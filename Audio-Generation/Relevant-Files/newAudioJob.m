@@ -33,17 +33,30 @@ function newAudioJob(filePath1, filePath2, expPath)
         mkdir(resultsFolder);
     end
     
-    % Create JSON structure with file names included
-    result = struct('file1', [name1 ext1], 'file2', [name2 ext2], 'crossCorrelation', maxCorr, 'scriptVersion', scriptVersion);
-    
-    % Save JSON to file
-    resultFile = fullfile(resultsFolder, 'cross_correlation_result.json');
-    if exist(resultFile, 'file') == 2
-        fprintf('"%s" already exists, writing to "cross_correlation_result_2.json".\n', resultFile);
-        saveJsonFile(fullfile(resultsFolder, 'cross_correlation_result_2.json'), result);
+% Create JSON structure with file names included
+result = struct('file1', [name1 ext1], 'file2', [name2 ext2], 'crossCorrelation', maxCorr, 'scriptVersion', scriptVersion);
+
+% Initialize a counter to add to the filename if it already exists
+counter = 1;
+while true
+    % Generate the filename with or without the counter
+    if counter == 1
+        resultFile = fullfile(resultsFolder, 'cross_correlation_result.json');
     else
-        saveJsonFile(resultFile, result);
+        resultFile = fullfile(resultsFolder, sprintf('cross_correlation_result_%d.json', counter));
     end
     
-    fprintf('Cross-correlation computation finished.\n');
+    % Check if the file already exists
+    if exist(resultFile, 'file') == 2
+        fprintf('"%s" already exists, trying the next filename.\n', resultFile);
+        counter = counter + 1;  % Increment the counter
+    else
+        % Save JSON to file
+        saveJsonFile(resultFile, result);
+        fprintf('JSON saved to "%s".\n', resultFile);
+        break;  % Exit the loop if the file is successfully saved
+    end
+end
+
+fprintf('Cross-correlation computation finished.\n');
 end
