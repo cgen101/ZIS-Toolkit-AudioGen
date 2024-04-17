@@ -1,4 +1,7 @@
 
+% Script to run newAudioJob on 2 pairs of files to demonstrate attempted pairing between
+%   co-located and non-colocated devices 
+
 % Common root path-- CHANGE TO YOUR PATH HERE
 rootPath = "C:\Users\chlo\Documents\Spring 24\Security (CS4371)\Project\Test-Dir-Fork\ZIS-toolkit-AudioGen\Audio-Generation\";
 
@@ -6,10 +9,10 @@ rootPath = "C:\Users\chlo\Documents\Spring 24\Security (CS4371)\Project\Test-Dir
 ioPath = fullfile(rootPath, "Relevant-Files");
 
 % Relative paths for the audio files
-filePath1 = fullfile(rootPath, "audio-files", "colocated_city.flac");
-filePath2 = fullfile(rootPath, "audio-files", "colocated_city.flac");
-filePath3 = fullfile(rootPath, "audio-files", "non_colocated_city.flac");
-filePath4 = fullfile(rootPath, "audio-files", "non_colocated_highway_2.flac");
+filePath1 = fullfile(rootPath, "audio-files", "colocated_idle_2.flac");
+filePath2 = fullfile(rootPath, "audio-files", "colocated_idle.flac");
+filePath3 = fullfile(rootPath, "audio-files", "non_colocated_city_2.flac");
+filePath4 = fullfile(rootPath, "audio-files", "non_colocated_city.flac");
 
 newAudioJob(filePath1, filePath2, ioPath);
 newAudioJob(filePath3, filePath4, ioPath);

@@ -2,7 +2,6 @@
 #   cross-correlation score.   
 
 import json
-
 # Define the root path-- CHANGE TO YOUR PATH HERE
 rootPath = r'C:\Users\chlo\Documents\Spring 24\Security (CS4371)\Project\Test-Dir-Fork\ZIS-toolkit-AudioGen\Audio-Generation\Relevant-Files\Results\\'
 
