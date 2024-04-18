@@ -45,14 +45,15 @@ def generate_colocated_pairs(duration, fs, output_dir):
         car_engine_noise_1 = generate_audio(duration, fs, amplitude, frequency_car)
         radio_noise_1 = generate_audio(duration, fs, amplitude, frequency_radio)
         road_noise_1 = generate_audio(duration, fs, amplitude, frequency_road)
-
         # Normalize the audio
         car_engine_noise_1 /= np.max(np.abs(car_engine_noise_1))
         radio_noise_1 /= np.max(np.abs(radio_noise_1))
         road_noise_1 /= np.max(np.abs(road_noise_1))
 
+        ambient_colocated = car_engine_noise_1 + radio_noise_1 + road_noise_1
+
         # Save the audio files
-        save_audio((car_engine_noise_1 * 32767).astype(np.int16), file_name_1, fs, output_dir)
+        save_audio((ambient_colocated * 32767).astype(np.int16), file_name_1, fs, output_dir)
         save_audio((radio_noise_1 * 32767).astype(np.int16), file_name_2, fs, output_dir)
         print(f"Pair {file_name_1} and {file_name_2} generated.")
 

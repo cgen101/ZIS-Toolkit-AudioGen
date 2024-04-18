@@ -29,7 +29,7 @@ for filePath in filePaths:
         cross_correlation = data.get('crossCorrelation', 0.0)
         fileName1 = ''.join(data.get('file1', []))
         fileName2 = ''.join(data.get('file2', []))
-        threshold = 0.011
+        threshold = 0.07
         if cross_correlation >= threshold:
             print(f"The files '{fileName1}' and '{fileName2}' are colocated based on the cross-correlation value.")
         else:
