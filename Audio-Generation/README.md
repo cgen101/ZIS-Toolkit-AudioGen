@@ -75,7 +75,7 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 * You may test as many pairings as you wish, but keep in mind there must be an even number of files to 
 pair .
 
-### 4. Open MATLAB, create a new project from directory 'udio-Generation'
+### 4. Open MATLAB, create a new project from directory 'Audio-Generation'
 * Make sure to add Audio-Generation directory with subfolders to project path 
 * Set Relevant-Files as your current folder 
 
