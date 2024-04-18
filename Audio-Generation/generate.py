@@ -8,6 +8,12 @@ def generate_audio(duration, fs, noise_levels):
     ambient_noise /= np.max(np.abs(ambient_noise))
     return ambient_noise
 
+def generate_audio_const(duration, fs, amplitude, frequency):
+    t = np.linspace(0, duration, int(fs * duration), endpoint=False)
+    sine_wave = amplitude * np.sin(2 * np.pi * frequency * t)
+    sine_wave /= np.max(np.abs(sine_wave))
+    return sine_wave
+
 def save_audio(audio_data, output_file, fs):
     sf.write(output_file, audio_data, fs)
 
