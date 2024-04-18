@@ -1,6 +1,7 @@
 # Implementation of audio generation and simulating tool
 
-This folder contains implimentation of an audio generation tool, which generates ambient audio for the car scenario based on user input, calculates the similarity score between 2 generated audio files, then simulates a pairing between 2 devices based on the similarity score.
+This folder contains implimentation of an audio generation toolkit, which generates ambient audio clips for the Car scenario. The toolkit additionally calculates the similarity score between 2 generated audio files, then simulates pairings between devices based on the similarity score.
+
 This feature builds on the paper "Perils of Zero-Interaction Security in the Internet of Things", by Mikhail Fomichev, Max Maass, Lars Almon, Alejandro Molina, Matthias Hollick, in Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, vol. 3, Issue 1, 2019. 
 
 This feature was built for the following ZIS scheme:
@@ -16,8 +17,9 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 
 ##### Altered files to do specific work for SoundProof (SPF) [4]
 * *newAudioJob.m* - **a main function** altered main function to include only relevant work for SoundProof (SPF) [4].
-* *RunAudioJob.m* - a script to run newAudioJob.m twice, with 2 different pairs of files (colocated and non-colocated files), to demonstrate a pairing attempt between 2 colocated devices and 2 non-colocated devices.
-* *determine-colocation.py* - a script to simulate a pairing between 2 devices based on their similarity score. 
+* *RunAudioJob.m* - a script to run newAudioJob.m for all pairs of files (colocated and non-colocated files), to demonstrate a pairing attempts between all audio files in the Car scenario.
+* *RunAudioJob-manual.m* - a script to run newAudioJob.m twice  with 2 pairs of files (colocated and non-colocated), to demonstrate a pairing attempts between a colocated and non-colocated device in the Car scenario.
+* *determine-colocation.py* - a script to simulate pairing between devices based on their similarity score. 
 
 ##### Unaltered files copied from Schemes > audio
 * *alignTwoSignals.m* - a function to align two discrete (audio) signals.
@@ -50,29 +52,31 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 ### 3. Navigate to Audio-Generation directory and either run *python generate.py*  or run *python generate_all.py* for all possible pairs.
 * Follow prompts in terminal to generate audio files
 * Each run of *python generate.py* will generate a pair of audio files for pairing simulation
+* Each run of *python generate_all.py* will generate all pairs of audio files for pairing simulation
 * The .flac files will be written into a sub-directory, 'audio-files', in 'Audio-Generation' with relevant names 
 * Keep in mind, each generation of non-colocated files will give slightly different results, as the non-colocated files have an element of randomness in their generation. 
 
-### 3. Change relevant filepaths in RunAudioJob- root and specific filenames
+### 3. Change relevant filepaths in RunAudioJob or RunAudioJob_manual- root and specific filenames
 * *filePath1* should be path to first audio file for pairing 1
 * *filePath2* should be path to second audio file for pairing 1
 * *filePath3* should be path to first audio file for pairing 2
 * *filePath4* should be path to second audio file for pairing 2
-* Add as many pairs as you would like to test to filePaths
+* Add as many pairs as you would like to test to filePaths.
 * You may test as many pairings as you wish, but keep in mind there must be an even number of files to 
-pair 
+pair .
 
-
-### 4. Open MATLAB, create a new project from file 
+### 4. Open MATLAB, create a new project from directory 'udio-Generation'
 * Make sure to add Audio-Generation directory with subfolders to project path 
 * Set Relevant-Files as your current folder 
 
-### 5. Run 'RunAudioJob'
-* RunAudioJob will create a subfolder in 'Relevant-Files' called *'Results'*
-* *'Results'* will contain json files with cross-correlation results for test pairings (n) upon completion numbered 1-n 
+### 5. Run 'RunAudioJob' or 'RunAudioJob_manual'
+* RunAudioJob and RunAudioJob_manual will create a subfolder in 'Relevant-Files' called *'Results'*
+* RunAudioJob is for testing all pairings, RunAudioJob_manual is for testing only 2 pairings.
+* *'Results'* will contain json files with cross-correlation results for test pairings for test 1-n upon completion, numbered 1-n.
 
 ### 6. Navigate to Relevant-Files and run determine-colocation.py 
 * To run pairings, change rootPath to your path to 'Results' then run *python determine-colocation.py*
+* Make sure to edit rootPath and fileNames to reflect your specific testing case.
 
 
 

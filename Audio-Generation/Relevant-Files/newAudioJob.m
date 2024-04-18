@@ -1,4 +1,13 @@
 function newAudioJob(filePath1, filePath2, expPath)
+% AUDIOJOB Main script used to generate results for: 
+% Karapanos, Nikolaos, et al. 
+% "Sound-Proof: Usable Two-Factor Authentication Based on Ambient Sound."
+% USENIX Security Symposium. 2015.
+
+%   Input args:
+%   - filePath1 - Full path to the first FLAC audio file (string)
+%   - filePath1 - Full path to the second FLAC audio file (string)
+%    - expPath -  Full path to directory for i/o
     % Version of the script
     scriptVersion = 'v1.2.3';
     

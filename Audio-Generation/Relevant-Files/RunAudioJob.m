@@ -1,4 +1,4 @@
-% Script to run newAudioJob on 2 pairs of files to demonstrate attempted pairing between
+% Script to run newAudioJob on all pairs of files to demonstrate attempted pairing between
 % co-located and non-colocated devices
 
 % Common root path-- CHANGE TO YOUR PATH HERE

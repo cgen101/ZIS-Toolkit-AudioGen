@@ -1,3 +1,4 @@
+# Script to generate all pairs of audio files
 import os
 import numpy as np
 import soundfile as sf
@@ -18,6 +19,7 @@ def save_audio(audio_data, output_file, fs, output_dir):
     output_path = os.path.join(output_dir, output_file)
     sf.write(output_path, audio_data, fs)
 
+# Generate all colocated pairs
 def generate_colocated_pairs(duration, fs, output_dir):
     car_states = ['city', 'highway', 'idle']
     for car_state in car_states:
@@ -41,7 +43,7 @@ def generate_colocated_pairs(duration, fs, output_dir):
             frequency_radio = 600
             frequency_road = 900
 
-        # Generate consistent sine wave for car engine noise
+        # Generate consistent sine wave for noises
         car_engine_noise_1 = generate_audio(duration, fs, amplitude, frequency_car)
         radio_noise_1 = generate_audio(duration, fs, amplitude, frequency_radio)
         road_noise_1 = generate_audio(duration, fs, amplitude, frequency_road)
@@ -57,6 +59,7 @@ def generate_colocated_pairs(duration, fs, output_dir):
         save_audio((radio_noise_1 * 32767).astype(np.int16), file_name_2, fs, output_dir)
         print(f"Pair {file_name_1} and {file_name_2} generated.")
 
+# Generate all non-colocated pairs
 def generate_non_colocated_pairs(duration, fs, output_dir):
     car_states = ['city', 'highway', 'idle']
     for car_state in car_states: 

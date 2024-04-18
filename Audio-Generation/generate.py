@@ -1,13 +1,10 @@
+# Script to generate 2 pairs of audio files for class demonstration
+
 import numpy as np
 import soundfile as sf
 import os
 
-def generate_audio(duration, fs, noise_levels):
-    t = np.linspace(0, duration, int(fs * duration), endpoint=False)
-    ambient_noise = sum([level * np.random.randn(len(t)) for level in noise_levels])
-    ambient_noise /= np.max(np.abs(ambient_noise))
-    return ambient_noise
-
+# Uses defined frequency to generate sound
 def generate_audio_const(duration, fs, amplitude, frequency):
     t = np.linspace(0, duration, int(fs * duration), endpoint=False)
     sine_wave = amplitude * np.sin(2 * np.pi * frequency * t)
@@ -56,7 +53,7 @@ t = np.linspace(0, duration, int(fs * duration), endpoint=False)
 output_dir = "audio-files"
 output_file_1 = os.path.join(output_dir, file_name_1)
 
-# Generate car engine noise based on user's choice
+# Generate noise based on user's choice
 if "non_colocated" in file_name_1:
     car_state_1 = file_name_1.split("_")[2].split(".")[0]
     if car_state_1 == "city":
@@ -72,15 +69,10 @@ if "non_colocated" in file_name_1:
         radio_noise_level_1 = np.random.uniform(0.1, 0.3)
         road_noise_level_1 = np.random.uniform(0.1, 0.3)
 
-    # Generate car engine noise
     car_engine_noise_1 = car_noise_level_1 * np.random.randn(len(t))
-    # Generate radio noise
     radio_noise_1 = radio_noise_level_1 * np.random.randn(len(t))
-    # Generate road noise
     road_noise_1 = road_noise_level_1 * np.random.randn(len(t))
-    # Combine all noises
     ambient_noise_1 = car_engine_noise_1 + radio_noise_1 + road_noise_1
-    # Normalize the audio
     ambient_noise_1 /= np.max(np.abs(ambient_noise_1))  
 else:  # Colocated
     car_state_1 = file_name_1.split("_")[1].split(".")[0]
@@ -110,7 +102,6 @@ else:  # Colocated
 
 # Save the first audio to a .wav file in the "audio-files" directory
 save_audio((ambient_noise_1 * 32767).astype(np.int16), output_file_1, fs)
-
 print(f"First ambient audio saved to {output_file_1}")
 
 # Generate the second audio based on the same user choice
@@ -120,9 +111,10 @@ if "non_colocated" in file_name_1:
 else:
     car_state_2 = car_state_1
     file_name_2 = f"colocated_{car_state_2}_2.flac"
+
 output_file_2 = os.path.join(output_dir, file_name_2)
 
-# Generate car engine noise based on user's choice
+# Generate noise based on user's choice
 if "non_colocated" in file_name_2:
     if car_state_2 == "city":
         car_noise_level_2 = np.random.uniform(0.4, 0.8)
@@ -137,19 +129,10 @@ if "non_colocated" in file_name_2:
         radio_noise_level_2 = np.random.uniform(0.1, 0.3)
         road_noise_level_2 = np.random.uniform(0.1, 0.3)
 
-    # Generate car engine noise
     car_engine_noise_2 = car_noise_level_2 * np.random.randn(len(t))
-
-    # Generate radio noise
     radio_noise_2 = radio_noise_level_2 * np.random.randn(len(t))
-
-    # Generate road noise
     road_noise_2 = road_noise_level_2 * np.random.randn(len(t))
-
-    # Combine all noises
     ambient_noise_2 = car_engine_noise_2 + radio_noise_2 + road_noise_2
-
-    # Normalize the audio
     ambient_noise_2 /= np.max(np.abs(ambient_noise_2))
 else:  # Colocated
     ambient_noise_2 = ambient_noise_1
