@@ -4,6 +4,16 @@ This folder contains implimentation of an audio generation toolkit, which genera
 
 This feature builds on the paper "Perils of Zero-Interaction Security in the Internet of Things", by Mikhail Fomichev, Max Maass, Lars Almon, Alejandro Molina, Matthias Hollick, in Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, vol. 3, Issue 1, 2019. 
 
+## A paper that "Perils of Zero-Interaction Security in the Internet of Things" references:
+[1] N. Karapanos, C. Marforio, and C. Soriente, “Sound-Proof: Usable Two-Factor Authentication Based on Ambient Sound.” Accessed: Apr. 18, 2024. [Online]. Available: https://arxiv.org/pdf/1503.03790.pdf
+
+## A paper that references "Perils of Zero-Interaction Security in the Internet of Things"
+[2] M. Conti and C. Lal, “Context-based Co-presence detection techniques: A survey,” Computers & Security, vol. 88, p. 101652, Jan. 2020, doi: https://doi.org/10.1016/j.cose.2019.101652.
+
+This paper builds on the insights provided by "Perils of Zero-Interaction Security in the Internet of Things" by offering a comprehensive survey and analysis of contextual-based proximity detection techniques in ZICDA systems. It extends the understanding of security challenges, adversary models, and existing attacks, providing valuable context for evaluating the schemes discussed in the original paper:
+
+
+
 This feature was built for the following ZIS scheme:
 * *SoundProof (SPF)*  [4]
 
