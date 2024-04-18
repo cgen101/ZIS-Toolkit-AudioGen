@@ -19,6 +19,5 @@ for i = 1:2:length(filePaths)
     filePath1 = filePaths{i};
     filePath2 = filePaths{i+1};
     fprintf('Processing pair:\n%s\n%s\n', filePath1, filePath2);
-    % Uncomment the next line once debugging is done
     newAudioJob(filePath1, filePath2, ioPath);
 end
