@@ -1,21 +1,20 @@
 # Implementation of audio generation and simulating tool
 
-This folder contains implimentation of an audio generation toolkit, which generates ambient audio clips for the Car scenario. The toolkit additionally calculates the similarity score between 2 generated audio files, then simulates pairings between devices based on the similarity score.
+This folder contains implimentation of an audio generation toolkit, which generates ambient audio clips for the Car scenario. The toolkit additionally calculates the similarity score between 2 generated audio files, then simulates pairings between devices based on the similarity score. There is a testing script provided which examines error rates.
+
+This feature was built for the following ZIS scheme:
+* *SoundProof (SPF)*  [4]
 
 This feature builds on the paper "Perils of Zero-Interaction Security in the Internet of Things", by Mikhail Fomichev, Max Maass, Lars Almon, Alejandro Molina, Matthias Hollick, in Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, vol. 3, Issue 1, 2019. 
 
-## A paper that "Perils of Zero-Interaction Security in the Internet of Things" references:
+### A paper that "Perils of Zero-Interaction Security in the Internet of Things" references:
 [1] N. Karapanos, C. Marforio, and C. Soriente, “Sound-Proof: Usable Two-Factor Authentication Based on Ambient Sound.” Accessed: Apr. 18, 2024. [Online]. Available: https://arxiv.org/pdf/1503.03790.pdf
 
-## A paper that references "Perils of Zero-Interaction Security in the Internet of Things"
+### A paper that references "Perils of Zero-Interaction Security in the Internet of Things"
 [2] M. Conti and C. Lal, “Context-based Co-presence detection techniques: A survey,” Computers & Security, vol. 88, p. 101652, Jan. 2020, doi: https://doi.org/10.1016/j.cose.2019.101652.
 
 This paper builds on the insights provided by "Perils of Zero-Interaction Security in the Internet of Things" by offering a comprehensive survey and analysis of contextual-based proximity detection techniques in ZICDA systems. It extends the understanding of security challenges, adversary models, and existing attacks, providing valuable context for evaluating the schemes discussed in the original paper:
 
-
-
-This feature was built for the following ZIS scheme:
-* *SoundProof (SPF)*  [4]
 
 ## File Structure
 
@@ -29,6 +28,7 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 * *newAudioJob.m* - **a main function** altered main function to include only relevant work for SoundProof (SPF) [4].
 * *RunAudioJob.m* - a script to run newAudioJob.m for all pairs of files (colocated and non-colocated files), to demonstrate a pairing attempts between all audio files in the Car scenario.
 * *RunAudioJob-manual.m* - a script to run newAudioJob.m twice  with 2 pairs of files (colocated and non-colocated), to demonstrate a pairing attempts between a colocated and non-colocated device in the Car scenario.
+* *RunTest.m* - a script to run newAudioJob.m for all pairs of files (colocated and non-colocated files) a specified amount of times and observe error rates
 * *determine-colocation.py* - a script to simulate pairing between devices based on their similarity score. 
 
 ##### Unaltered files copied from Schemes > audio
@@ -66,7 +66,7 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 * The .flac files will be written into a sub-directory, 'audio-files', in 'Audio-Generation' with relevant names 
 * Keep in mind, each generation of non-colocated files will give slightly different results, as the non-colocated files have an element of randomness in their generation. 
 
-### 3. Change relevant filepaths in RunAudioJob or RunAudioJob_manual- root and specific filenames
+### 4. Change relevant filepaths in RunAudioJob/RunAudioJob_manual/RunTest- root and specific filenames
 * *filePath1* should be path to first audio file for pairing 1
 * *filePath2* should be path to second audio file for pairing 1
 * *filePath3* should be path to first audio file for pairing 2
@@ -75,16 +75,17 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 * You may test as many pairings as you wish, but keep in mind there must be an even number of files to 
 pair .
 
-### 4. Open MATLAB, create a new project from directory 'Audio-Generation'
+### 5. Open MATLAB, create a new project from directory 'Audio-Generation'
 * Make sure to add Audio-Generation directory with subfolders to project path 
 * Set Relevant-Files as your current folder 
 
-### 5. Run 'RunAudioJob' or 'RunAudioJob_manual'
+### 6. Run 'RunAudioJob' or 'RunAudioJob_manual' or 'RunTest'
 * RunAudioJob and RunAudioJob_manual will create a subfolder in 'Relevant-Files' called *'Results'*
 * RunAudioJob is for testing all pairings, RunAudioJob_manual is for testing only 2 pairings.
+* RunTest is an automated testing script which uses generate_all.py and RunAudioJob.m to test multiple audio generation events, determine similarity scores between pairs, and examine error rates. 
 * *'Results'* will contain json files with cross-correlation results for test pairings for test 1-n upon completion, numbered 1-n.
 
-### 6. Navigate to Relevant-Files and run determine-colocation.py 
+### 7. Navigate to Relevant-Files and run determine-colocation.py if not auto-testing
 * To run pairings, change rootPath to your path to 'Results' then run *python determine-colocation.py*
 * Make sure to edit rootPath and fileNames to reflect your specific testing case.
 
